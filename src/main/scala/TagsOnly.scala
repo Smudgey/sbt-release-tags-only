@@ -42,17 +42,14 @@ object TagsOnly {
     val git = getGit(st)
     val gitDescribeCmd = git.cmd("describe", "--match", s"$tagPrefix-[0-9]*")
     val gitDescription = gitDescribeCmd.! match {
-      case 0 => {
+      case 0 =>
         st.log.info("Found existing tag matching the module name")
-        git.cmd("describe", "--match", s"$tagPrefix-*").!!.trim
-      }
-      case 128 => {
+        gitDescribeCmd.!!.trim
+      case 128 =>
         st.log.info("No existing tags matching the module name were found")
         s"$tagPrefix-0.0.0-auto-generated-initial-tag"
-      }
-      case _ => {
+      case _ =>
         throw new RuntimeException(s"Unexpected failure running $gitDescribeCmd")
-      }
     }
     st.log.info("Most recent tag matching the module was '%s'" format gitDescription)
 
