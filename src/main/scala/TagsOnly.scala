@@ -40,7 +40,7 @@ object TagsOnly {
       Project.extract(st).runTask(releaseVersion, st)._2))
 
     val git = getGit(st)
-    val gitDescribeCmd = git.cmd("describe", "--match", s"$tagPrefix-*")
+    val gitDescribeCmd = git.cmd("describe", "--match", s"$tagPrefix-[0-9]*")
     val gitDescription = gitDescribeCmd.! match {
       case 0 => {
         st.log.info("Found existing tag matching the module name")

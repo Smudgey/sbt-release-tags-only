@@ -1,6 +1,6 @@
 lazy val `sbt-release-tags-only` = project in file(".")
 
-organization := "com.oliverlockwood"
+organization := "com.smudgey"
 name := "sbt-release-tags-only"
 
 homepage := Some(url("https://github.com/sbt/sbt-release"))
@@ -13,10 +13,10 @@ publishMavenStyle := false
 addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.7")
 
 // Bintray
-bintrayOrganization := Some("oliverlockwood")
-bintrayRepository := "sbt"
+bintrayOrganization := Some("smudgey")
+bintrayRepository := "sbt-plugins"
 bintrayReleaseOnPublish := false
-bintrayVcsUrl := Some("https://github.com/oliverlockwood/sbt-release-tags-only")
+bintrayVcsUrl := Some("https://github.com/smudgey/sbt-release-tags-only")
 licenses += ("Apache-2.0", url("https://opensource.org/licenses/Apache-2.0"))
 
 // Release
